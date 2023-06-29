@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffca00;
+    padding: 10px 20px;
+  }
+
+  .navbar img {
+    width: auto;
+    height: 35px;
+  }
+  
+  .login button {
+    background-color: #333;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
