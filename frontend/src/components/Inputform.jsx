@@ -21,7 +21,7 @@ const InputForm = () => {
 
       try{
 
-        const response = await axios.post('http://localhost:8081/v1/add', newMonitor);
+        const response = await axios.post('http://localhost:8081/v1/operation/add', newMonitor);
         console.log(response);
         
         if(response.data.isSuccess){
