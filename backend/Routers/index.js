@@ -1,9 +1,15 @@
 const express = require("express");
 const route = express.Router();
 
-route.get("/", (req, res) => {
-  console.log("REACHED IN ROUTERS/Index.js")
-  res.send({ message: "HomePage", owner: "Tilak Singh" });
+route.post("/add", (req, res) => {
+  const newAddress = req.body.url;
+
+  //add newAddress to db
+  
+  return res.json({
+    isSuccess: 1,
+    message: "Added new address"
+  });
 });
 
 module.exports = route;
