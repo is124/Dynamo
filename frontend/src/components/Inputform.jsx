@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import MonitorCard from "./MonitorCard.jsx";
+import axios from 'axios';
 
 const InputForm = () => {
   const [inputValue, setInputValue] = useState('');
@@ -10,12 +11,24 @@ const InputForm = () => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (inputValue) {
       const newMonitor = { url: inputValue };
-      setMonitorList((prevList) => [...prevList, newMonitor]);
-      setInputValue('');
+
+      try{
+
+        const response = await axios.post('http://localhost:8081/v1/add', newMonitor);
+        console.log(response);
+        
+        if(response.data.isSuccess){
+          setMonitorList((prevList) => [...prevList, newMonitor]);
+        }
+
+        setInputValue('');
+      }catch(err){
+        console.error('Error submitting data:', err);
+      }
     }
   };
 
