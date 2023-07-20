@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { TextField, Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import MonitorCard from "./MonitorCard.jsx";
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const InputForm = () => {
   const [inputValue, setInputValue] = useState('');
@@ -22,6 +25,12 @@ const InputForm = () => {
         console.log(response);
         
         if(response.data.isSuccess){
+          toast.success(response.data.message, {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: true,
+            theme: "colored",
+          });
           setMonitorList((prevList) => [...prevList, newMonitor]);
         }
 
