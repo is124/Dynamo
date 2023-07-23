@@ -1,9 +1,15 @@
 const repo = require("./../Repo/index");
+const Utils = require("./../Utils/index");
 
 const Create = async (webaddress) => {
   try {
     
-    const response = await repo.Create(webaddress);
+    const data = {
+      NAME: Utils.getWebsiteName(webaddress),
+      URL: webaddress
+    }
+
+    const response = await repo.Create(data);
 
     return response;
 

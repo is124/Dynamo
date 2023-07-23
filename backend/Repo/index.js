@@ -4,10 +4,11 @@ const Response_Time = require("./../Models/Response_Time");
 const SSL_Status = require("./../Models/SSL_Status");
 
 
-const Create = async (webaddress) => {
+const Create = async (webdetails) => {
   try {
     const data = {
-      url: webaddress
+      name: webdetails.NAME,
+      url: webdetails.URL
     }
     const insertRecord = await WebAddressStorage.create(data);
     
