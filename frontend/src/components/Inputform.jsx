@@ -13,25 +13,41 @@ const InputForm = ({ onMonitorAdd, onMonitorFieldAdd }) => {
     setInputValue(e.target.value);
   };
 
+  const getWebName = (url) => {
+      const trimmedURL = url.replace(/^(https?:\/\/)/i, '');
+      const domainName = trimmedURL.split('/')[0]; 
+      const domainWithoutWWW = domainName.replace(/^www\./i, '');
+
+      const websiteName = domainWithoutWWW.split('.')[0];
+      const capitalizedWebsiteName = websiteName.charAt(0).toUpperCase() + websiteName.slice(1);
+
+      return capitalizedWebsiteName;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (inputValue) {
-      const newMonitor = { url: inputValue };
-
+        const webUrl = { url: inputValue };
+        const webName = getWebName(inputValue);
+        const monitor = {
+          name: webName,
+          url: inputValue,
+        };
+      
       try{
-        onMonitorAdd(newMonitor);
-        onMonitorFieldAdd(newMonitor.url);
+        onMonitorFieldAdd(monitor); // adds to left panel
 
-        const response = await axios.post('http://localhost:8081/v1/operation/add', newMonitor);
+        // const response = await axios.post('http://localhost:8081/v1/operation/add', webUrl);
 
-        if(response.data.isSuccess){
-          toast.success(response.data.message, {
-            position: 'top-right',
-            autoClose: 2000,
-            hideProgressBar: true,
-            theme: "colored",
-          });
-        }
+        // if(response.data.isSuccess){
+        //   toast.success(response.data.message, {
+        //     position: 'top-right',
+        //     autoClose: 2000,
+        //     hideProgressBar: true,
+        //     theme: "colored",
+        //   });
+        // }
 
         setInputValue('');
       }catch(err){

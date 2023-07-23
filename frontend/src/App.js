@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import NavBar from './components/NavBar';
-import InputForm from "./components/Inputform";
+import InputForm from './components/Inputform';
 import MonitorCard from './components/MonitorCard';
-import LeftSidePanel from './components/LeftPanel';
+import LeftPanel from './components/LeftPanel';
 
 function App() {
   const [selectedMonitor, setSelectedMonitor] = useState(null);
@@ -12,23 +12,22 @@ function App() {
     setSelectedMonitor(monitor);
   };
 
-  const handleAddMonitorField = (fieldName) => {
-    setMonitorFields((prevFields) => [...prevFields, fieldName]);
+  const handleAddMonitorField = (monitor) => {
+    setMonitorFields((prevFields) => [...prevFields, monitor]);
   };
 
-  const handleMonitorFieldClick = (fieldName) => {
-    setSelectedMonitor(fieldName);
+  const handleMonitorFieldClick = (monitor) => {
+    setSelectedMonitor(monitor);
   };
 
   return (
     <div>
       <NavBar />
-      
-      <div style={{ display: 'flex' }}>
-        <div>
-          <LeftSidePanel monitorFields={monitorFields} onMonitorFieldClick={handleMonitorFieldClick} />
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '20px' }}>
+        <div style={{ flex: '1', minWidth: '250px' }}>
+          <LeftPanel monitorFields={monitorFields} onMonitorFieldClick={handleMonitorFieldClick} />
         </div>
-        <div>
+        <div style={{ flex: '2', marginRight: '180px', height: 'min-content' }}>
           <InputForm onMonitorAdd={handleMonitorSelect} onMonitorFieldAdd={handleAddMonitorField} />
           <MonitorCard monitor={selectedMonitor} />
         </div>

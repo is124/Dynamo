@@ -11,12 +11,12 @@ const LeftPanel = ({ monitorFields, onMonitorFieldClick }) => {
         </div>
       ) : (
         <ul>
-          {monitorFields.map((fieldName, index) => (
-            <li key={index} className='list-item' onClick={() => onMonitorFieldClick(fieldName)}>
-              <span>{fieldName}</span>
-              <div className='icon-container'>
-                <FaEdit className='edit-icon' />
-                <FaTrash className='delete-icon' />
+          {monitorFields.map((monitor, index) => (
+            <li key={index} className="list-item" onClick={() => onMonitorFieldClick(monitor)}>
+              <span>{monitor.name}</span>
+              <div className="icon-container">
+                <FaEdit className="edit-icon" />
+                <FaTrash className="delete-icon" />
               </div>
             </li>
           ))}
