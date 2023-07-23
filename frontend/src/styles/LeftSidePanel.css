@@ -1,0 +1,52 @@
+.left-side-panel {
+  width: 180px;
+  height: 84vh;
+  background-color: #FFC9FF;
+  border-right: 1px solid #ccc;
+  border: 1px solid;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.left-side-panel h2 {
+  position: sticky;
+  top: 20px;
+  background-color: #f1f1f1;
+  padding-bottom: 10px;
+  z-index: 1;
+}
+
+.left-side-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.left-side-panel .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+  padding:5px;
+}
+
+.left-side-panel .icon-container {
+  display: flex;
+  justify-content: space-between; /* Update to space between */
+  gap: 5px;
+}
+
+.left-side-panel .edit-icon,
+.left-side-panel .delete-icon {
+  cursor: pointer;
+}
+
+.left-side-panel .empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #888;
+  font-size: 16px;
+}
