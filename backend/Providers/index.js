@@ -1,14 +1,21 @@
 const repo = require("./../Repo/index");
 
-const Create = async () => {
+const Create = async (webaddress) => {
   try {
+    
+    const response = await repo.Create(webaddress);
+
+    return response;
+
   } catch (err) {
+    console.error("Error in Provider: ", err);
     return {
       isSuccess: 0,
-      message: err,
+      message: err.message,
     };
   }
 };
+
 
 const Read = async () => {
   try {

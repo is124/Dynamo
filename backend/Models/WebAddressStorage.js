@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const { sequelize } = require("./../DBConfigs/db");
 
 const WebAddressStorage = sequelize.define(
-  "WebAddressStorage",
+  "WebAddressStorages",
   {
     id: {
       type: Sequelize.INTEGER,

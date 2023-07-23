@@ -1,17 +1,27 @@
+const provider = require("./../Providers/index");
+
 const Create = async (req, res) => {
-    try {
-        const newAddress = req.body.url;
+  try {
+    const response = await provider.Create(req.body.url);
 
-        //add newAddress to db and get response from provider
-  
-        return res.json({
-          isSuccess: 1,
-          message: "Added new address"
-        });
-
-    } catch (err) {
-        console.log(err);
+    if (response.isSuccess) {
+      return res.json({
+        isSuccess: 1,
+        message: "Successfully Added",
+      });
+    } else {
+      return res.json({
+        isSuccess: 0,
+        message: "Failed to add",
+      });
     }
+  } catch (err) {
+    console.log(err);
+    return res.json({
+      isSuccess: 0,
+      message: "Error occurred while adding the web address",
+    });
+  }
 };
 
 const Read = async (req, res) => {
