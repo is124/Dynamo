@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { TextField, Button} from '@material-ui/core';
-import MonitorCard from "./MonitorCard.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -38,16 +37,16 @@ const InputForm = ({ onMonitorAdd, onMonitorFieldAdd }) => {
       try{
         onMonitorFieldAdd(monitor); // adds to left panel
 
-        // const response = await axios.post('http://localhost:8081/v1/operation/add', webUrl);
+        const response = await axios.post('http://localhost:8081/v1/operation/add', webUrl);
 
-        // if(response.data.isSuccess){
-        //   toast.success(response.data.message, {
-        //     position: 'top-right',
-        //     autoClose: 2000,
-        //     hideProgressBar: true,
-        //     theme: "colored",
-        //   });
-        // }
+        if(response.data.isSuccess){
+          toast.success(response.data.message, {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: true,
+            theme: "colored",
+          });
+        }
 
         setInputValue('');
       }catch(err){
