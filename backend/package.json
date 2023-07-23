@@ -59,6 +59,7 @@
     "mime-types": "^2.1.35",
     "minimatch": "^3.1.2",
     "ms": "^2.0.0",
+    "mysql2": "^3.5.2",
     "negotiator": "^0.6.3",
     "nodemon": "^2.0.22",
     "nopt": "^1.0.10",
@@ -79,6 +80,7 @@
     "safer-buffer": "^2.1.2",
     "semver": "^5.7.1",
     "send": "^0.18.0",
+    "sequelize": "^6.32.1",
     "serve-static": "^1.15.0",
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.4",
@@ -94,10 +96,9 @@
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC"
