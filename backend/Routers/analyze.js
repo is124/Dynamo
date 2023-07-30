@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Arser = require("./../Controllers/PerformanceCtrls.js");
+const Performance = require("./../Controllers/PerformanceCtrls.js");
 
-router.post("/perform", Arser.checkArser);
+router.post("/", Performance.CheckWebsite);
 
 module.exports = router;
