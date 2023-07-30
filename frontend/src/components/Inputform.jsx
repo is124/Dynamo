@@ -25,7 +25,7 @@ const InputForm = ({ onMonitorAdd, onMonitorFieldAdd }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (inputValue) {
         const webUrl = { url: inputValue };
         const webName = getWebName(inputValue);
@@ -33,6 +33,7 @@ const InputForm = ({ onMonitorAdd, onMonitorFieldAdd }) => {
           name: webName,
           url: inputValue,
         };
+        setInputValue('');
       
       try{
         onMonitorFieldAdd(monitor); // adds to left panel
@@ -48,7 +49,7 @@ const InputForm = ({ onMonitorAdd, onMonitorFieldAdd }) => {
           });
         }
 
-        setInputValue('');
+        
       }catch(err){
         console.error('Error submitting data:', err);
       }

@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Grid, Typography } from '@material-ui/core';
+import axios from 'axios';
 
 const MonitorCard = ({ monitor }) => {
-  
-  const calculateValues = () => {
-    // Perform calculations to get the values based on the URL
-    // Replace the hardcoded values with your actual calculations
+  const [calculatedValues, setCalculatedValues] = useState({
+    'Availability': '',
+    'Response Time': '',
+    'SSL Certificate': '',
+    'Error Logging': '',
+    'Resource Usage': '',
+  });
 
-    const availability = 'High'; // Example: calculateAvailability(url);
-    const responseTime = 'Fast'; // Example: calculateResponseTime(url);
-    const sslCertificate = 'Valid'; // Example: calculateSSL(url);
-    const errorLogging = 'Enabled'; // Example: calculateErrorLogging(url);
-    const resourceUsage = 'Low'; // Example: calculateResourceUsage(url);
+  const fetchCalculatedValues = async () => {
+    try {
+      // const response = await axios.post('https://example-api.com/api/calculate', { name: monitor.name });
+      // const { availability, responseTime, sslCert, errorLogg, Usage } = response.data;
 
-    return {
-      Availability: availability,
-      'Response Time': responseTime,
-      'SSL Certificate': sslCertificate,
-      'Error Logging': errorLogging,
-      'Resource Usage': resourceUsage,
-    };
+      // setCalculatedValues({
+      //   'Availability': availability,
+      //   'Response Time': responseTime,
+      //   'SSL Certificate': sslCert,
+      //   'Error Logging': errorLogg,
+      //   'Resource Usage': Usage,
+      // });
+    } catch (error) {
+      console.error('Error fetching calculated values:', error);
+    }
   };
 
-  const calculatedValues = calculateValues();
+  useEffect(() => {
+    fetchCalculatedValues();
+  }, [monitor]);
 
   return (
     <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'flex-start', marginTop: '10px' }}>
@@ -40,22 +48,11 @@ const MonitorCard = ({ monitor }) => {
               </Grid>
               <Grid item xs={9} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start' }}>
                 <div>
-                  {Object.entries(calculatedValues)
-                    .slice(0, 3)
-                    .map(([key, value], index) => (
-                      <Typography variant="body1" gutterBottom key={index}>
-                        <b>{key}:</b> {value}
-                      </Typography>
-                    ))}
-                </div>
-                <div>
-                  {Object.entries(calculatedValues)
-                    .slice(3)
-                    .map(([key, value], index) => (
-                      <Typography variant="body1" gutterBottom key={index}>
-                        <b>{key}:</b> {value}
-                      </Typography>
-                    ))}
+                  {Object.entries(calculatedValues).map(([key, value], index) => (
+                    <Typography variant="body1" gutterBottom key={index}>
+                      <b>{key}:</b> {value}
+                    </Typography>
+                  ))}
                 </div>
               </Grid>
             </Grid>

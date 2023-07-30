@@ -3,7 +3,6 @@ import NavBar from './components/NavBar';
 import InputForm from './components/Inputform';
 import MonitorCard from './components/MonitorCard';
 import LeftPanel from './components/LeftPanel';
-import axios from 'axios';
 
 function App() {
   const [selectedMonitor, setSelectedMonitor] = useState(null);
@@ -19,15 +18,6 @@ function App() {
 
   const handleMonitorFieldClick = (monitor) => {
     setSelectedMonitor(monitor);
-
-    const apiUrl = 'https://example-api.com/api/endpoint';
-    axios.post(apiUrl, { name: monitor.name })
-      .then((response) => {
-        console.log('API response:', response.data);
-      })
-      .catch((error) => {
-        console.error('API error:', error);
-      });
   };
 
   

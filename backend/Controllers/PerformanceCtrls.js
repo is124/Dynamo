@@ -1,6 +1,13 @@
 const https = require('https');
 const http = require('http');
 
+// You have 'Name' from 'Name' fetch 'Url' from WebAddressStorage db and return ARSER. no need of other dbs as of now
+
+const checkArser = (name) => {
+
+}
+
+
 const checkAvailabilityAndResponseTime = (url) => {
   const startTime = Date.now();
 
@@ -85,8 +92,5 @@ const checkCacheUsage = (url) => {
   };
 
 module.exports = {
-  checkAvailabilityAndResponseTime,
-  checkSSLStatus,
-  checkNumberOfRequests,
-  checkCacheUsage,
+  checkArser
 };

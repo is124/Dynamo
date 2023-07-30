@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "pas123code",
+    PASSWORD: "password@123",
     DB: "Dynamo",
     dialect: "mysql",
     pool: {
