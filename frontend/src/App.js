@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import InputForm from './components/Inputform';
 import MonitorCard from './components/MonitorCard';
 import LeftPanel from './components/LeftPanel';
+import axios from 'axios';
 
 function App() {
   const [selectedMonitor, setSelectedMonitor] = useState(null);
@@ -16,10 +17,20 @@ function App() {
     setMonitorFields((prevFields) => [...prevFields, monitor]);
   };
 
-  const handleMonitorFieldClick = (monitor) => {
-    setSelectedMonitor(monitor);
+  const handleMonitorFieldClick = async (monitor) => {
+    try {
+      const response = await axios.post('http://localhost:8081/v1/analyze/', monitor);
+  
+      setSelectedMonitor({
+        ...monitor,
+        calculatedValues: response.data.data,
+        name: monitor.name,
+      });
+    } catch (error) {
+      console.error('Error occurred:', error);
+      alert('Oops! Something went wrong. Please try again later.');
+    }
   };
-
   
 
   return (
