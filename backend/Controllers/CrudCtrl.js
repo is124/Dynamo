@@ -43,6 +43,9 @@ const Update = async (req, res) => {
 const Delete = async (req, res) => {
   try {
 
+    const name = req.body;
+    res.send({name});
+
   } catch (err) {
     res.send({ location: "Controllers", method: "Delete" });
   }
